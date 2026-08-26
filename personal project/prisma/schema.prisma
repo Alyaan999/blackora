@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id               String   @id @default(cuid())
+  name             String
+  slug             String   @unique
+  tagline          String?  @db.Text
+  description      String?  @db.Text
+  category         String   // 'men' | 'women' | 'unisex'
+  price            Float
+  originalPrice    Float?
+  stock            Int      @default(0)
+  commissionAmount Float    @default(200) // Profit for affiliate (hidden from public)
+  images           String   @db.Text // JSON string array of image URLs
+  specs            String?  @db.Text // JSON string of specs
+  featured         Boolean  @default(false)
+  bestSeller       Boolean  @default(false)
+  isNewArrival     Boolean  @default(false)
+  rating           Float    @default(5.0)
+  reviewCount      Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model User {
+  id             String   @id @default(cuid())
+  name           String
+  email          String   @unique
+  passwordHash   String
+  phone          String?
+  role           String   @default("customer") // 'customer' | 'admin'
+  referralCode   String   @unique
+  isSeller       Boolean  @default(false) // unlocked when has >= 1 delivered order
+  walletBalance  Float    @default(0)
+  pendingBalance Float    @default(0)
+  totalEarned    Float    @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Order {
+  id                    String   @id @default(cuid())
+  orderNumber           String   @unique
+  userId                String?
+  customerName          String
+  customerEmail         String
+  customerPhone         String
+  city                  String
+  address               String   @db.Text
+  postalCode            String?
+  notes                 String?  @db.Text
+  items                 String   @db.Text // JSON string of OrderItem[]
+  subtotal              Float
+  deliveryCharge        Float
+  total                 Float
+  paymentMethod         String   // 'cod' | 'easypaisa' | 'jazzcash'
+  paymentStatus         String   // 'pending_verification' | 'approved' | 'paid' | 'rejected'
+  transactionId         String?  // EasyPaisa / JazzCash TRX proof
+  referralCodeUsed      String?
+  referrerUserId        String?
+  totalCommissionEarned Float    @default(0)
+  commissionPaid        Boolean  @default(false)
+  status                String   @default("pending") // 'pending' | 'confirmed' | 'processing' | 'shipped' | 'delivered' | 'cancelled'
+  statusHistory         String   @db.Text // JSON string of status logs
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
+
+model Withdrawal {
+  id            String    @id @default(cuid())
+  userId        String
+  userName      String
+  userEmail     String
+  userPhone     String
+  amount        Float
+  paymentMethod String    // 'easypaisa' | 'jazzcash' | 'bank_transfer'
+  accountTitle  String
+  accountNumber String
+  bankName      String?
+  status        String    @default("pending") // 'pending' | 'processing' | 'approved' | 'rejected'
+  adminNote     String?   @db.Text
+  createdAt     DateTime  @default(now())
+  processedAt   DateTime?
+}
+
+model Settings {
+  id                    String   @id @default("default")
+  storeName             String   @default("Blackora")
+  storeTagline          String   @default("Timeless Elegance & Precision Luxury Timepieces")
+  currency              String   @default("Rs.")
+  deliveryFee           Float    @default(250)
+  freeDeliveryThreshold Float    @default(5000)
+  defaultReferralReward Float    @default(200)
+  easyPaisaAccountTitle String   @default("Shumaila Kausar")
+  easyPaisaAccountNumber String  @default("03486611494")
+  jazzCashAccountTitle  String   @default("Shumaila Kausar")
+  jazzCashAccountNumber String   @default("03284217256")
+  supportPhone          String   @default("+92 300 1234567")
+  supportEmail          String   @default("support@blackora.com")
+  supportWhatsapp       String   @default("+92 300 1234567")
+  adminUsername         String   @default("admin")
+  adminPassword         String   @default("admin123")
+  updatedAt             DateTime @updatedAt
+}
