@@ -37,8 +37,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (stored) {
         setItems(JSON.parse(stored));
       }
-    } catch (e) {
-      console.error('Failed to load cart from localStorage', e);
+    } catch (_e) {
+      console.error('Failed to load cart from localStorage', _e);
     }
     setIsInitialized(true);
   }, []);
@@ -47,8 +47,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
     if (isInitialized) {
       try {
         localStorage.setItem('blackora_cart', JSON.stringify(items));
-      } catch (e) {
-        console.error('Failed to save cart to localStorage', e);
+      } catch (_e) {
+        console.error('Failed to save cart to localStorage', _e);
       }
     }
   }, [items, isInitialized]);

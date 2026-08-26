@@ -10,18 +10,9 @@ import {
   Package,
   Search,
   Truck,
-  CheckCircle2,
-  Clock,
   MapPin,
-  Smartphone,
-  ShieldCheck,
-  Sparkles,
-  ArrowRight,
-  ExternalLink,
-  Phone,
   Headphones,
   AlertCircle,
-  ChevronRight,
   RefreshCw,
 } from 'lucide-react';
 

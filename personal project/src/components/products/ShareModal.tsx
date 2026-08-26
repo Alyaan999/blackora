@@ -4,12 +4,11 @@ import React, { useState } from 'react';
 import { X, Copy, Check, Share2, Sparkles, MessageCircle, ArrowRight } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
 import { useToast } from '@/lib/toast-context';
-import Link from 'next/link';
 
 interface ShareModalProps {
   productId: string;
   productName: string;
-  productSlug: string;
+  productSlug?: string;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -17,7 +16,6 @@ interface ShareModalProps {
 export function ShareModal({
   productId,
   productName,
-  productSlug,
   isOpen,
   onClose,
 }: ShareModalProps) {

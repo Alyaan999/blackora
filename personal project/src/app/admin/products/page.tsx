@@ -12,9 +12,6 @@ import {
   Trash2,
   X,
   Sparkles,
-  ShieldCheck,
-  CheckCircle2,
-  Eye,
 } from 'lucide-react';
 
 export default function AdminProductsPage() {

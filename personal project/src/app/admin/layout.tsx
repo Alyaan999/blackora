@@ -20,7 +20,7 @@ import {
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, isAdmin, logout, isLoading } = useAuth();
+  const { isAdmin, logout, isLoading } = useAuth();
 
   // If visiting admin login page, bypass auth check
   const isLoginPage = pathname === '/admin/login';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Truck, Gift, RefreshCw, Zap, CreditCard } from 'lucide-react';
+import { ShieldCheck, Truck, Zap, CreditCard } from 'lucide-react';
 
 export function FeatureBadges() {
   const features = [

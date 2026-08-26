@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { UploadCloud, Image as ImageIcon, Check, Loader2, Link as LinkIcon } from 'lucide-react';
+import { UploadCloud, Check, Loader2, Link as LinkIcon } from 'lucide-react';
 import { useToast } from '@/lib/toast-context';
 
 interface ImageUploaderProps {

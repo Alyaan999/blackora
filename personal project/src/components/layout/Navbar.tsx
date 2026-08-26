@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   ShoppingBag,
   User as UserIcon,
@@ -13,7 +13,6 @@ import {
   TrendingUp,
   ShieldCheck,
   LogOut,
-  SlidersHorizontal,
 } from 'lucide-react';
 import { BlackoraLogo } from '@/components/ui/BlackoraLogo';
 import { useCart } from '@/lib/cart-context';
@@ -21,8 +20,9 @@ import { useAuth } from '@/lib/auth-context';
 
 export function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const { openCart, totalItems } = useCart();
-  const { user, isSeller, isAdmin, logout } = useAuth();
+  const { user, isAdmin, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -219,7 +219,8 @@ export function Navbar() {
                 onSubmit={(e) => {
                   e.preventDefault();
                   if (searchQuery.trim()) {
-                    window.location.href = `/collections?search=${encodeURIComponent(searchQuery.trim())}`;
+                    router.push(`/collections?search=${encodeURIComponent(searchQuery.trim())}`);
+                    setIsSearchOpen(false);
                   }
                 }}
                 className="relative max-w-2xl mx-auto"

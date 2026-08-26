@@ -39,15 +39,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         localStorage.removeItem('blackora_user_id');
         setUser(null);
       }
-    } catch (e) {
-      console.error('Error refreshing user', e);
+    } catch (_e) {
+      console.error('Error refreshing user', _e);
     } finally {
       setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    refreshUser();
+    void refreshUser();
   }, []);
 
   const login = async (email: string, password: string) => {
@@ -65,7 +65,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return { success: true };
       }
       return { success: false, error: data.error || 'Login failed' };
-    } catch (e) {
+    } catch (_e) {
       return { success: false, error: 'Network error occurred' };
     }
   };
@@ -85,7 +85,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return { success: true };
       }
       return { success: false, error: data.error || 'Invalid admin credentials' };
-    } catch (e) {
+    } catch (_e) {
       return { success: false, error: 'Network error occurred' };
     }
   };
@@ -105,7 +105,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return { success: true };
       }
       return { success: false, error: data.error || 'Signup failed' };
-    } catch (e) {
+    } catch (_e) {
       return { success: false, error: 'Network error occurred' };
     }
   };

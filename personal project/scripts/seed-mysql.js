@@ -1,3 +1,8 @@
+try {
+  require('dotenv').config();
+} catch (e) {
+  // dotenv optional
+}
 const mysql = require('mysql2/promise');
 
 const INITIAL_PRODUCTS = [

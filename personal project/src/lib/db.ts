@@ -46,7 +46,7 @@ export async function getProducts(): Promise<Product[]> {
 
 export async function getPublicProducts(): Promise<Omit<Product, 'stock' | 'commissionAmount'>[]> {
   const products = await getProducts();
-  return products.map(({ stock, commissionAmount, ...rest }) => rest);
+  return products.map(({ stock: _stock, commissionAmount: _comm, ...rest }) => rest);
 }
 
 export async function getProductById(id: string): Promise<Product | null> {

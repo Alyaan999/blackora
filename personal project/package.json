@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma generate",
+    "db:seed": "node scripts/seed-mysql.js"
   },
   "dependencies": {
     "@prisma/client": "^7.9.1",
