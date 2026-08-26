@@ -25,7 +25,7 @@ import {
   RefreshCw,
 } from 'lucide-react';
 
-export default function OrderTrackingPage() {
+function OrderTrackingContent() {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get('id') || searchParams.get('order') || '';
 
@@ -365,5 +365,13 @@ export default function OrderTrackingPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function OrderTrackingPage() {
+  return (
+    <React.Suspense fallback={<div className="min-h-screen bg-[#08090d] flex items-center justify-center text-zinc-400">Loading...</div>}>
+      <OrderTrackingContent />
+    </React.Suspense>
   );
 }

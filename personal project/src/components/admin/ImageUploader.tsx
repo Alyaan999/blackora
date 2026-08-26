@@ -27,30 +27,26 @@ export function ImageUploader({ value, onChange }: ImageUploaderProps) {
     setUploading(true);
 
     try {
-      const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'demo';
-      const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || 'unsigned_preset';
-
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('upload_preset', uploadPreset);
 
-      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+      const res = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
       });
 
       const data = await res.json();
 
-      if (data.secure_url) {
-        onChange(data.secure_url);
-        success('Image uploaded to Cloudinary successfully!');
+      if (res.ok && data.url) {
+        onChange(data.url);
+        success('Image uploaded successfully!');
       } else {
-        // If Cloudinary preset is not configured yet, convert file to local Data URL or advise
+        // Fallback or error display
         const reader = new FileReader();
         reader.onloadend = () => {
           if (reader.result) {
             onChange(reader.result as string);
-            toast('Loaded local preview image (Configure Cloudinary in .env for production storage)', 'info');
+            toast(data.error || 'Failed to upload to Cloudinary. Check your .env credentials.', 'error');
           }
         };
         reader.readAsDataURL(file);
@@ -61,7 +57,7 @@ export function ImageUploader({ value, onChange }: ImageUploaderProps) {
       reader.onloadend = () => {
         if (reader.result) {
           onChange(reader.result as string);
-          toast('Loaded image preview (Configure Cloudinary in .env for production storage)', 'info');
+          toast('Network error uploading image', 'error');
         }
       };
       reader.readAsDataURL(file);
