@@ -813,7 +813,7 @@ export async function updateWithdrawalStatus(
 // ---------------- SETTINGS (100% Direct MySQL) ----------------
 export async function getSettings(): Promise<StoreSettings> {
   const p = getMySQLPool();
-  const [rows] = await p.query<any[]>('SELECT * FROM settings WHERE id = "default" LIMIT 1');
+  const [rows] = await p.query<any[]>("SELECT * FROM settings WHERE id = 'default' LIMIT 1");
   if (!rows || rows.length === 0) {
     return {
       storeName: 'Blackora',
@@ -861,9 +861,16 @@ export async function updateSettings(updates: Partial<StoreSettings>): Promise<S
   const p = getMySQLPool();
   await p.query(
     `INSERT INTO settings (id, storeName, storeTagline, currency, deliveryFee, freeDeliveryThreshold, defaultReferralReward, easyPaisaAccountTitle, easyPaisaAccountNumber, jazzCashAccountTitle, jazzCashAccountNumber, supportPhone, supportEmail, supportWhatsapp, adminUsername, adminPassword)
-     VALUES ('default', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+     VALUES ('default', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) AS new_vals
      ON DUPLICATE KEY UPDATE
-       storeName=VALUES(storeName), storeTagline=VALUES(storeTagline), currency=VALUES(currency), deliveryFee=VALUES(deliveryFee), freeDeliveryThreshold=VALUES(freeDeliveryThreshold), defaultReferralReward=VALUES(defaultReferralReward), easyPaisaAccountTitle=VALUES(easyPaisaAccountTitle), easyPaisaAccountNumber=VALUES(easyPaisaAccountNumber), jazzCashAccountTitle=VALUES(jazzCashAccountTitle), jazzCashAccountNumber=VALUES(jazzCashAccountNumber), supportPhone=VALUES(supportPhone), supportEmail=VALUES(supportEmail), supportWhatsapp=VALUES(supportWhatsapp), adminUsername=VALUES(adminUsername), adminPassword=VALUES(adminPassword)`,
+       storeName=new_vals.storeName, storeTagline=new_vals.storeTagline, currency=new_vals.currency,
+       deliveryFee=new_vals.deliveryFee, freeDeliveryThreshold=new_vals.freeDeliveryThreshold,
+       defaultReferralReward=new_vals.defaultReferralReward,
+       easyPaisaAccountTitle=new_vals.easyPaisaAccountTitle, easyPaisaAccountNumber=new_vals.easyPaisaAccountNumber,
+       jazzCashAccountTitle=new_vals.jazzCashAccountTitle, jazzCashAccountNumber=new_vals.jazzCashAccountNumber,
+       supportPhone=new_vals.supportPhone, supportEmail=new_vals.supportEmail,
+       supportWhatsapp=new_vals.supportWhatsapp, adminUsername=new_vals.adminUsername,
+       adminPassword=new_vals.adminPassword`,
     [
       merged.storeName,
       merged.storeTagline,
