@@ -197,7 +197,7 @@ export default function HelpCenterPage() {
         {/* Quick Concierge Channels */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <a
-            href="https://wa.me/923001234567?text=Hello%20Blackora%20Concierge,%20I%20have%20an%20inquiry."
+            href="https://wa.me/923071468568?text=Hello%20Blackora%20Concierge,%20I%20have%20an%20inquiry."
             target="_blank"
             rel="noopener noreferrer"
             className="group bg-[#12141c] hover:bg-[#161924] border border-zinc-800 hover:border-amber-500/40 p-5 rounded-2xl transition-all duration-200 flex items-center gap-4 shadow-lg"
@@ -209,7 +209,7 @@ export default function HelpCenterPage() {
               <div className="text-xs font-bold text-zinc-200 group-hover:text-amber-400 transition-colors">
                 Instant WhatsApp Chat
               </div>
-              <p className="text-[11px] text-zinc-500">+92 300 1234567</p>
+              <p className="text-[11px] text-zinc-500">+92 307 1468568</p>
             </div>
           </a>
 

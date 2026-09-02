@@ -333,10 +333,10 @@ async function seedMySQL() {
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       ON DUPLICATE KEY UPDATE passwordHash=VALUES(passwordHash);
     `, [
-      'user-admin-1', 'Blackora Admin', 'admin@blackora.com', 'admin123', '03001234567', 'admin', 'BLK-ADMIN01', 1, 0, 0, 0
+      'user-admin-1', 'Blackora Admin', 'admin@blackora.com', 'admin123', '03071468568', 'admin', 'BLK-ADMIN01', 1, 0, 0, 0
     ]);
 
-    // Insert Sample Seller into MySQL
+    // Insert Sample Seller into MySQL 
     await connection.query(`
       INSERT INTO users (id, name, email, passwordHash, phone, role, referralCode, isSeller, walletBalance, pendingBalance, totalEarned)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
