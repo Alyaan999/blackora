@@ -54,21 +54,21 @@ export function Navbar() {
   return (
     <>
       {/* Top Announcement Bar */}
-      <div className="bg-gradient-to-r from-[#0b0c10] via-amber-950/40 to-[#0b0c10] border-b border-amber-500/20 text-amber-200/90 text-xs py-2 px-4 text-center font-medium tracking-wider flex items-center justify-center gap-2">
-        <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-        <span>ELEVATE YOUR STYLE • FREE DELIVERY ON ORDERS OVER RS. 5,000 • COD & EASYPAISA</span>
-        <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+      <div className="bg-gradient-to-r from-[#0b0c10] via-amber-950/40 to-[#0b0c10] border-b border-amber-500/20 text-amber-200/90 text-[10px] sm:text-xs py-2 px-3 sm:px-4 text-center font-medium tracking-wider flex items-center justify-center gap-1.5 sm:gap-2 max-w-full overflow-hidden">
+        <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse shrink-0" />
+        <span className="truncate">ELEVATE YOUR STYLE • FREE DELIVERY OVER RS. 5,000 • COD & EASYPAISA</span>
+        <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse shrink-0" />
       </div>
 
       {/* Main Navbar */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${
+        className={`sticky top-0 z-40 transition-all duration-300 w-full max-w-full ${
           isScrolled
             ? 'bg-[#0b0c10]/95 backdrop-blur-md border-b border-zinc-800/80 shadow-xl shadow-black/40'
             : 'bg-[#0b0c10]/80 backdrop-blur-sm border-b border-zinc-900'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex items-center justify-between h-20">
             {/* Left: Mobile menu button */}
             <div className="flex items-center gap-4 lg:hidden">

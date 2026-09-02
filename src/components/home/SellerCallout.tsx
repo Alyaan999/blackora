@@ -25,11 +25,11 @@ export function SellerCallout() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-[#0b0c10] via-[#12141e] to-[#0b0c10] border-y border-zinc-800 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-[#0b0c10] via-[#12141e] to-[#0b0c10] border-y border-zinc-800 relative overflow-x-clip overflow-hidden max-w-full">
       {/* Background glow */}
-      <div className="absolute top-1/2 right-10 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-10 w-80 h-80 max-w-full bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 px-3.5 py-1 rounded-full text-amber-300 text-xs font-bold tracking-widest uppercase">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />

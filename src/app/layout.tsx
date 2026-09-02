@@ -109,12 +109,12 @@ export default function RootLayout({
       <head>
         <JsonLd />
       </head>
-      <body className={`${inter.variable} ${cinzel.variable} font-sans bg-[#0b0c10] text-zinc-100 min-h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-black`}>
+      <body className={`${inter.variable} ${cinzel.variable} font-sans bg-[#0b0c10] text-zinc-100 min-h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-black w-full max-w-full overflow-x-hidden relative`}>
         <ToastProvider>
           <AuthProvider>
             <CartProvider>
               <Navbar />
-              <main className="flex-1">{children}</main>
+              <main className="flex-1 w-full max-w-full overflow-x-clip">{children}</main>
               <Footer />
               <CartDrawer />
               <MobileNav />

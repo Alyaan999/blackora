@@ -4,12 +4,12 @@ import { ArrowRight, Sparkles, Zap } from 'lucide-react';
 
 export function HeroBanner() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#0b0c10] via-[#10121a] to-[#0b0c10] py-16 sm:py-24 border-b border-zinc-800/80">
+    <section className="relative overflow-x-clip overflow-hidden max-w-full bg-gradient-to-b from-[#0b0c10] via-[#10121a] to-[#0b0c10] py-16 sm:py-24 border-b border-zinc-800/80">
       {/* Background Decorative Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -top-10 right-10 w-72 h-72 bg-yellow-600/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 max-w-full bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-10 right-10 w-72 h-72 max-w-full bg-yellow-600/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Headlines & CTAs */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">

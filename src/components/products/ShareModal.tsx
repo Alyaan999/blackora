@@ -79,12 +79,12 @@ export function ShareModal({
               <label className="text-[11px] font-semibold text-zinc-300 block mb-1.5">
                 Your Direct Affiliate Link:
               </label>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 min-w-0">
                 <input
                   type="text"
                   readOnly
                   value={shareUrl}
-                  className="w-full bg-[#181a24] border border-zinc-700 rounded-xl px-3 py-2.5 text-xs text-zinc-200 font-mono focus:outline-none select-all"
+                  className="min-w-0 flex-1 bg-[#181a24] border border-zinc-700 rounded-xl px-3 py-2.5 text-xs text-zinc-200 font-mono focus:outline-none select-all truncate"
                 />
                 <button
                   onClick={copyToClipboard}

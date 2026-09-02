@@ -297,12 +297,12 @@ export default function SellerPage() {
                   <span className="text-[11px] uppercase tracking-wider text-zinc-400 font-bold block">
                     Your Direct Share Link (Auto-Applies Code)
                   </span>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 min-w-0">
                     <input
                       type="text"
                       readOnly
                       value={referralLink}
-                      className="w-full bg-[#12141c] border border-zinc-700 rounded-xl px-3 py-2.5 text-xs text-zinc-200 font-mono focus:outline-none select-all"
+                      className="min-w-0 flex-1 bg-[#12141c] border border-zinc-700 rounded-xl px-3 py-2.5 text-xs text-zinc-200 font-mono focus:outline-none select-all truncate"
                     />
                     <button
                       onClick={copyLink}

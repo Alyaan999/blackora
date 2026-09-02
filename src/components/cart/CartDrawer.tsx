@@ -22,8 +22,8 @@ export function CartDrawer() {
         className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
       />
 
-      <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-[#0f1118] border-l border-zinc-800 text-zinc-100 flex flex-col shadow-2xl">
+      <div className="absolute inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
+        <div className="w-full sm:w-[420px] max-w-full bg-[#0f1118] border-l border-zinc-800 text-zinc-100 flex flex-col shadow-2xl">
           {/* Header */}
           <div className="p-5 border-b border-zinc-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
